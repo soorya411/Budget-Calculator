@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My budget-home</title>
+    <link rel="shortcut icon" href="https://thumbs.dreamstime.com/b/family-budget-calculator-composition-isometric-home-planning-income-expenses-people-vector-illustration-237598163.jpg" type="image/x-icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="javascript:void(0)">My Budget</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mynavbar">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Icome</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Expense</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <button onclick="Logout()" class="btn btn-light gradient-custom-2" style="color: white;" type="button">Log Out</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <section class="h-100 gradient-form" style="background-color: #eee;">
+      
+            <!-- <h3 >Welcome My Budget</h3> -->
+            <div><marquee behavior="" direction="right">
+                <h3 id="slide" style="font-style:normal; color: #b44593;padding: 20px;">
+
+                </h3>
+            </marquee>
+            </div>
+        
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-xl-10">
+                    <div class="card rounded-3 text-black">
+                        <div class="row g-0">
+                            <div class="col-lg-4 d-flex align-items-center gradient-custom-2">
+                                <form>
+                                    <div class="card-body text-center p-md-5 mx-md-4">
+                                        <div class="form-outline mb-2">
+                                            <input type="text" id="c_type" class="form-control"
+                                                placeholder="Description" />
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            <input type="text" id="c_money" class="form-control"
+                                                placeholder="Enter Income" />
+                                        </div>
+                                        <div class="text-center pt-1 mb-2 pb-1">
+                                            <button onclick="Add()" id="ctext" class="btn btn btn-block  bg-light  mb-3"
+                                                type="button">Add+
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-lg-4 d-flex align-items-center">
+                                <div id="bal" class="card-body text-center p-md-5 mx-md-4">
+                                    
+                                </div>
+                            </div>
+                            <div class="col-lg-4 d-flex align-items-center gradient-custom-2">
+                                <form>
+                                    <div class="card-body text-center p-md-5 mx-md-4">
+                                        <div class="form-outline mb-2">
+                                            <input type="text" id="ex_type" class="form-control"
+                                                placeholder="Description" />
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            <input type="text" id="ex_money" class="form-control"
+                                                placeholder="Enter Expense" />
+                                        </div>
+                                        
+                                        <div class="text-center pt-1 mb-2 pb-1">
+                                            <button onclick="Expense()" id="ctext" class="btn btn-block  bg-light mb-3" type="button">Add
+                                                Expense+
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                    <p id="alt" style="font-size: 25px; text-align: center; padding: 10px;"></p>
+
+                    <div class="card rounded-3 text-black my-3">
+                        <div class="row g-0 my-5">
+                            <div class="col-lg-6 d-flex align-items-center">
+                               
+                                <table class="table" id="income_table">
+                                    
+                                    <thead>
+                                       
+                                        <tr>
+                                            <th colspan="3" style="color: #b44593; text-align: center; background-color: black;">Income</th></tr>
+                                        <tr>
+                                            <th >Type</th>
+                                            <th >Amount</th>
+                                            <th >Balance</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="income_output">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-lg-1 d-flex align-items-center">
+
+                            </div>
+                            <div class="col-lg-5 d-flex align-items-center">
+                                <table class="table" id="expense_table">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="3" style="color: #b44593; text-align: center; background-color: black;">Expense</th>
+                                        </tr>
+                                        <tr>
+                                            <th >Type</th>
+                                            <th >Amount</th>
+                                            <th >Balance</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="expense-output">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <footer class="text-center bg-body-tertiary">
+        <!-- Grid container -->
+        <div class="container pt-4">
+          <!-- Section: Social media -->
+          <section class="mb-4">
+            <!-- Facebook -->
+            <a
+              data-mdb-ripple-init
+              class="btn btn-link btn-floating btn-lg text-body m-1"
+              href="#!"
+              role="button"
+              data-mdb-ripple-color="dark"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+      
+            <!-- Twitter -->
+            <a
+              data-mdb-ripple-init
+              class="btn btn-link btn-floating btn-lg text-body m-1"
+              href="#!"
+              role="button"
+              data-mdb-ripple-color="dark"
+              ><i class="fab fa-twitter"></i
+            ></a>
+      
+            <!-- Google -->
+            <a
+              data-mdb-ripple-init
+              class="btn btn-link btn-floating btn-lg text-body m-1"
+              href="#!"
+              role="button"
+              data-mdb-ripple-color="dark"
+              ><i class="fab fa-google"></i
+            ></a>
+      
+            <!-- Instagram -->
+            <a
+              data-mdb-ripple-init
+              class="btn btn-link btn-floating btn-lg text-body m-1"
+              href="#!"
+              role="button"
+              data-mdb-ripple-color="dark"
+              ><i class="fab fa-instagram"></i
+            ></a>
+      
+            <!-- Linkedin -->
+            <a
+              data-mdb-ripple-init
+              class="btn btn-link btn-floating btn-lg text-body m-1"
+              href="#!"
+              role="button"
+              data-mdb-ripple-color="dark"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+            <!-- Github -->
+            <a
+              data-mdb-ripple-init
+              class="btn btn-link btn-floating btn-lg text-body m-1"
+              href="#!"
+              role="button"
+              data-mdb-ripple-color="dark"
+              ><i class="fab fa-github"></i
+            ></a>
+          </section>
+          <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+      
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+          © 2023 Copyright:
+          <a class="text-body" style="text-decoration:none;"  href="#">My Family Budget.com</a>
+        </div>
+        <!-- Copyright -->
+        
+      </footer>
+    <script src="./script.js"></script>
+</body>
+
+</html>
